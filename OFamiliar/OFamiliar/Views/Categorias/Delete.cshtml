@@ -1,0 +1,45 @@
+﻿@model OFamiliar.Models.Categoria
+
+
+@{
+    ViewBag.Title = "Remover cliente";
+}
+
+<h2>Remover dados da <i><b>categoria</b></i></h2>
+
+<h3>Quer realmente apagar este registo?</h3>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Remover" class="btn btn-default" /> |
+            @Html.ActionLink("Regressar a  Listagem", "Index")
+        </div>
+    }
+</div>

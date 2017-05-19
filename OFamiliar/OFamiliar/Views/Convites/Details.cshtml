@@ -1,0 +1,58 @@
+﻿@model OFamiliar.Models.Convite
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Destinatario.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destinatario.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emissor.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emissor.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Familiar.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Familiar.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Token)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Token)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ConviteID }) |
+    @Html.ActionLink("Regressar a  Listagem", "Index")
+</p>
