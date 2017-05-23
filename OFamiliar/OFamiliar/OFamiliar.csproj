@@ -221,8 +221,15 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-flaty.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\freelancer.css" />
+    <Content Include="Content\freelancer.min.css" />
+    <Content Include="Content\imag\conta.jpg" />
+    <Content Include="Content\imag\conta1.png" />
+    <Content Include="Content\imag\conta2.jpg" />
+    <Content Include="Content\imag\conta3.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

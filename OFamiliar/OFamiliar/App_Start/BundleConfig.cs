@@ -24,7 +24,8 @@ namespace OFamiliar
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                     "~/Content/bootstrap-flaty.css",
+                     //"~/Content/freelancer.css",
                       "~/Content/site.css"));
         }
     }
