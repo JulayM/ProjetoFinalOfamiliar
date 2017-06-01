@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
+d@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
 /*!
  * bootswatch v3.3.7
  * Homepage: http://bootswatch.com
@@ -4963,17 +4963,17 @@ a.badge:focus {
     text-align:center;
     color:inherit;
 }
-.jumbotron {
+/*.jumbotron {
   padding-top: 0px;
   padding-bottom: 0px;
   height:350px;
   margin-bottom: 30px;
   color:inherit;
-  background-image: url('../Content/imag/conta.jpg');
+  /*background-image: url('../Content/imag/conta.jpg');*/
    /*background-image: url('../Content/imag/conta2.jpg');
   background-image: url('../Content/imag/conta3.jpg');*/
-  background-size:cover;
-}
+  /*background-size:cover;
+}**//
 .jumbotron h1,
 .jumbotron .h1 {
   color: inherit;

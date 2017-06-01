@@ -1,7 +1,5 @@
-﻿using Microsoft.Owin;
-using Owin;
+﻿using Owin;
 
-[assembly: OwinStartupAttribute(typeof(OFamiliar.Startup))]
 namespace OFamiliar
 {
     public partial class Startup

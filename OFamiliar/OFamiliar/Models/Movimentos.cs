@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace OFamiliar.Models
 {
@@ -21,9 +18,10 @@ namespace OFamiliar.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime Data { get; set; }//Inicializa uma nova instância da estrutura DateTime para o ano, o mês e o dia especificados.
 
+        [Required]
         [Display(Name = "Montante")]
         public string Valor { get; set; }
-
+        [Required]
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 

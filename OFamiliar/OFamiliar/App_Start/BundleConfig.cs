@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace OFamiliar
 {
@@ -24,8 +23,8 @@ namespace OFamiliar
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                     "~/Content/bootstrap-flaty.css",
-                     //"~/Content/freelancer.css",
+                      "~/Content/bootstrap-flaty.css",
+                     // "~/Content/freelancer.css",
                       "~/Content/site.css"));
         }
     }

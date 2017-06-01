@@ -22,9 +22,10 @@ namespace OFamiliar.Models
         [Display(Name = "Identificador da Pessoa")]
         public int PessoaID { get; set; }
 
-        [Required(ErrorMessage = "O {0} é do preenchimento obrigatório...")]
-        [Display(Name = "Nome da Pessoa")]
-        [StringLength(30)]
+        //[Required(ErrorMessage = "o {0} é de preenchimento obrigatório")]
+        //[Display(Name = "Nome do Dono do Animal")]
+        //[RegularExpression("[A-ZÍÂÓ][a-záéíóúàèìòùâêîôûãõäëïöüç']+((-| )((de|da|do|dos) )?[A-ZÍÂÓ][a-záéíóúàèìòùâêîôûãõäëïöüç']+)*",
+        //ErrorMessage = "No {0} só são aceites letras. Cada nome começa, obrigatoriamente, por uma maiúscula...")]
         public string Nome { get; set; }
 
        
@@ -40,8 +41,11 @@ namespace OFamiliar.Models
         public string Telefone { get; set; }
 
         public string Genero { get; set; }
-        
-       // [StringLength(9)]
+
+        //[Required]
+        //[StringLength(9)]
+        //[RegularExpression("[0-9]{9}",
+        // ErrorMessage = "Escreva apenas 9 carateres numéricos...")]
         public string NIF { get; set; }
 
         // Uma pessoa tem uma coleção de convites recebidos
