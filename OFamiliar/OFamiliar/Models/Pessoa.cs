@@ -18,7 +18,7 @@ namespace OFamiliar.Models
         }
 
         [Key]//indica que o atributo é um chave primaria "PK"
-      [DatabaseGenerated(DatabaseGeneratedOption.None)] // marcar o atributo como não auto number
+       // [DatabaseGenerated(DatabaseGeneratedOption.None)] // marcar o atributo como não auto number
         [Display(Name = "Identificador da Pessoa")]
         public int PessoaID { get; set; }
 

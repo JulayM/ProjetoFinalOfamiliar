@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OFamiliar.Models
 {
@@ -64,7 +66,8 @@ namespace OFamiliar.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        [StringLength(30)]
+                public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -73,9 +76,42 @@ namespace OFamiliar.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirmar password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        //***********************************************************
+        // dados específicos de uma PESSOA
+
+        [Required(ErrorMessage = "o {0} é de preenchimento obrigatório")]
+        //  [Display(Name = "Nome do Dono d")]
+        [RegularExpression("[A-ZÍÂÓ][a-záéíóúàèìòùâêîôûãõäëïöüç']+((-| )((de|da|do|dos) )?[A-ZÍÂÓ][a-záéíóúàèìòùâêîôûãõäëïöüç']+)*",
+           ErrorMessage = "No {0} só são aceites letras. Cada nome começa, obrigatoriamente, por uma maiúscula...")]
+        public string Nome { get; set; }
+
+
+        [Display(Name = "Data de Nascimento")]
+        //só regista 'datas', não 'horas'
+        [Column(TypeName = "Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime? DataNascimento { get; set; }
+               
+        [StringLength(9)]
+        [RegularExpression("[0-9]{9}", ErrorMessage = "O {0} não é valido.")]
+        public string Telefone { get; set; }
+
+        [StringLength(1)]
+        public string Genero { get; set; }
+
+        [Required]
+        [StringLength(9)]
+        [RegularExpression("[0-9]{9}", ErrorMessage = "Escreva apenas 9 carateres numéricos...")]
+        public string NIF { get; set; }
+
+
+
+
+
     }
 
     public class ResetPasswordViewModel

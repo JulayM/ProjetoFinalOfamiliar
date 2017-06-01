@@ -19,7 +19,7 @@ namespace OFamiliar.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -149,15 +149,37 @@ namespace OFamiliar.Controllers
         {
             if (ModelState.IsValid)
             {
+                // criar o Utilizador
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+                    // associar os dados de um novo Utilizador à classe Pessoa
+
+                    // criar ref. 'a BD
+                    ApplicationDbContext db = new ApplicationDbContext();
+                    // criar ref. a um obj. Pessoa
+                    Pessoas pessoa = new Pessoas();
+                    // atribuir os dados da pessoa que se registou
+                    pessoa.Nome = model.Nome;
+                    pessoa.DataNascimento = model.DataNascimento;
+                    pessoa.Email = model.Email;
+                    pessoa.Genero = model.Genero;
+                    pessoa.NIF = model.NIF;
+                    pessoa.Telefone = model.Telefone;
+                    pessoa.UserName = model.Email;
+
+                    // adicionar a 'pessoa' à BD
+                    db.Pessoas.Add(pessoa);
+                    db.SaveChanges();
+
+                    //// cria um token para enviar ao utilizador por email
+                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    //ViewBag.Link = callbackUrl;
+                    //return View("DisplayEmail");
+                    return View("ConfirmaCriacaoUtilizador");
                 }
                 AddErrors(result);
             }
