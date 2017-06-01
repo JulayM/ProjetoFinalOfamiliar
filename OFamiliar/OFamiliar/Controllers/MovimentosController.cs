@@ -8,7 +8,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using OFamiliar.Models;
-using OFamiliar.Models;
 
 namespace OFamiliar.Controllers
 {

@@ -26,17 +26,17 @@ namespace OFamiliar.Migrations
             // ############################################################################################
             // adiciona PESSOAS
             var pessoas = new List<Pessoas> {
-                new Pessoas  {PessoaID=1, Nome = "Luís Freitas", NIF ="813635582", Email="luis.freitas@mail.pt", Genero="M",Telefone ="920000100",DataNascimento = new DateTime(1975,3,25) },
-                new Pessoas  {PessoaID=2, Nome = "Maria Freitas", NIF ="203635501", Email="maria.freitas@mail.pt", Genero ="F",Telefone ="920000111" ,DataNascimento = new DateTime(1979,4,12) },
-                new Pessoas  {PessoaID=3, Nome = "Rita Maria Freitas", NIF ="923635545", Email="rita.freitas@mail.pt", Genero="M",Telefone ="922000133",DataNascimento = new DateTime(1987,8,15)  },
-                new Pessoas  {PessoaID=4, Nome = "João Paulo Mendes", NIF ="353635510", Email="Joao.Paulo@mail.pt", Genero ="M",Telefone ="920000586" ,DataNascimento = new DateTime(1983,3,22) },
-                new Pessoas  {PessoaID=5, Nome = "Ana Paula Mendes", NIF ="143635565", Email="Ana.Paula@mail.pt", Genero="F",Telefone ="960000888",DataNascimento = new DateTime(2007,3,12)  },
-                new Pessoas  {PessoaID=6, Nome = "Rui Silva", NIF ="443635500", Email="Rui_Silva@mail.pt", Genero ="M",Telefone ="920002000" ,DataNascimento = new DateTime(1985,3,12) },
-                new Pessoas  {PessoaID=7, Nome = "Pedro Guerra", NIF ="773635522", Email="Pedro_Guerra@mail.pt", Genero="M",Telefone ="920000106",DataNascimento = new DateTime(1978,5,24)  },
-                new Pessoas  {PessoaID=8, Nome = "Bruno de Carvalho", NIF ="353635582", Email="Bruno_Carvalho@mail.pt", Genero ="M",Telefone ="920000108",DataNascimento = new DateTime(2000,9,27)  },
-                new Pessoas  {PessoaID=9, Nome = "Patrizia.Ligas", NIF ="123635500", Email="Patrizia12@mail.pt", Genero ="F",Telefone ="920000177",DataNascimento = new DateTime(1980,1,31)  },
-                new Pessoas  {PessoaID=10, Nome = "Sofia Varela", NIF ="1453635522", Email="Sofia_Guerra@mail.pt", Genero="F",Telefone ="960000133" ,DataNascimento = new DateTime(1992,4,29) },
-                new Pessoas  {PessoaID=11, Nome = "Vasco Marques", NIF ="353635582", Email="Vasco.Marques@mail.pt", Genero ="M",Telefone ="960000185",DataNascimento = new DateTime(2006,3,3)  }
+                new Pessoas  {PessoaID=1,  Nome = "Luís Freitas",       NIF ="813635582", Email="luis.freitas@mail.pt",  Genero="M",  Telefone ="920000100",DataNascimento = new DateTime(1975,3,25), UserName="luis.freitas@mail.pt" },
+                new Pessoas  {PessoaID=2,  Nome = "Maria Freitas",      NIF ="203635501", Email="maria.freitas@mail.pt", Genero ="F", Telefone ="920000111" ,DataNascimento = new DateTime(1979,4,12), UserName="maria.freitas@mail.pt" },
+                new Pessoas  {PessoaID=3,  Nome = "Rita Maria Freitas", NIF ="923635545", Email="rita.freitas@mail.pt",  Genero="M",  Telefone ="922000133",DataNascimento = new DateTime(1987,8,15), UserName="rita.freitas@mail.pt"  },
+                new Pessoas  {PessoaID=4,  Nome = "João Paulo Mendes",  NIF ="353635510", Email="Joao.Paulo@mail.pt",    Genero ="M", Telefone ="920000586" ,DataNascimento = new DateTime(1983,3,22), UserName="Joao.Paulo@mail.pt" },
+                new Pessoas  {PessoaID=5,  Nome = "Ana Paula Mendes",   NIF ="143635565", Email="Ana.Paula@mail.pt",     Genero="F",  Telefone ="960000888",DataNascimento = new DateTime(2007,3,12), UserName="Ana.Paula@mail.pt"  },
+                new Pessoas  {PessoaID=6 , Nome = "Rui Silva",          NIF ="443635500", Email="Rui_Silva@mail.pt",     Genero ="M", Telefone ="920002000" ,DataNascimento = new DateTime(1985,3,12), UserName="Rui_Silva@mail.pt" },
+                new Pessoas  {PessoaID=7,  Nome = "Pedro Guerra",       NIF ="773635522", Email="Pedro_Guerra@mail.pt",  Genero="M",  Telefone ="920000106",DataNascimento = new DateTime(1978,5,24), UserName="Pedro_Guerra@mail.pt"  },
+                new Pessoas  {PessoaID=8,  Nome = "Bruno de Carvalho",  NIF ="353635582", Email="Bruno_Carvalho@mail.pt",Genero ="M", Telefone ="920000108",DataNascimento = new DateTime(2000,9,27), UserName="Bruno_Carvalho@mail.pt"  },
+                new Pessoas  {PessoaID=9,  Nome = "Patrizia Ligas",     NIF ="123635500", Email="Patrizia12@mail.pt",    Genero ="F", Telefone ="920000177",DataNascimento = new DateTime(1980,1,31), UserName="Patrizia12@mail.pt"  },
+                new Pessoas  {PessoaID=10, Nome = "Sofia Varela",       NIF ="145363552", Email="Sofia_Guerra@mail.pt",  Genero="F",  Telefone ="960000133" ,DataNascimento = new DateTime(1992,4,29), UserName="Sofia_Guerra@mail.pt" },
+                new Pessoas  {PessoaID=11, Nome = "Vasco Marques",      NIF ="353635582", Email="Vasco.Marques@mail.pt", Genero ="M", Telefone ="960000185",DataNascimento = new DateTime(2006,3,3), UserName="Vasco.Marques@mail.pt"  }
 
             };
             pessoas.ForEach(pp => context.Pessoas.AddOrUpdate(p => p.Nome, pp));
@@ -119,15 +119,15 @@ namespace OFamiliar.Migrations
             // adiciona MOVIMENTOS
             var movimento = new List<Movimentos>
             {
-                new Movimentos {MovimentosID = 1,  Data = new DateTime(2017,3,12), Valor="€100,00", Descricao ="Salário do mês de fevereiro", DonoDoMovimentoFK=1, FamiliasFK=1, CategoriaFK=1},
-                new Movimentos {MovimentosID = 2,  Data = new DateTime(2017,4,1),  Valor="€80,00",  Descricao ="Arroz,feijão,leite,Azeite,carnes,pão", DonoDoMovimentoFK =2, FamiliasFK=1, CategoriaFK=2},
-                new Movimentos {MovimentosID = 3,  Data = new DateTime(2017,4,27), Valor="€70,00",  Descricao ="Medicamentos da Ana", DonoDoMovimentoFK=4, FamiliasFK=3, CategoriaFK=3},
-                new Movimentos {MovimentosID = 4,  Data = new DateTime(2017,4,16), Valor="€500,00", Descricao ="Viagem a Roma", DonoDoMovimentoFK =6, FamiliasFK=3, CategoriaFK=6},
-                new Movimentos {MovimentosID = 5,  Data = new DateTime(2017,4,16), Valor="€50,00", Descricao ="Jantar no restaurante", DonoDoMovimentoFK =7, FamiliasFK=4, CategoriaFK=6},
-                new Movimentos {MovimentosID = 6,  Data = new DateTime(2017,4,19), Valor="€30,00", Descricao ="Visita de estudo", DonoDoMovimentoFK =6, FamiliasFK=2, CategoriaFK=6}
+                new Movimentos {MovimentosID = 1,  Data = new DateTime(2017,3,12), Valor=100.00, Moeda="Euro", Descricao ="Salário do mês de fevereiro", DonoDoMovimentoFK=1, FamiliasFK=1, CategoriaFK=1},
+                new Movimentos {MovimentosID = 2,  Data = new DateTime(2017,4,1),  Valor=80.00, Moeda="Euro",  Descricao ="Arroz,feijão,leite,Azeite,carnes,pão", DonoDoMovimentoFK =2, FamiliasFK=1, CategoriaFK=2},
+                new Movimentos {MovimentosID = 3,  Data = new DateTime(2017,4,27), Valor=70.00, Moeda="Euro",  Descricao ="Medicamentos da Ana", DonoDoMovimentoFK=4, FamiliasFK=3, CategoriaFK=3},
+                new Movimentos {MovimentosID = 4,  Data = new DateTime(2017,4,16), Valor=500.00, Moeda="Euro", Descricao ="Viagem a Roma", DonoDoMovimentoFK =6, FamiliasFK=3, CategoriaFK=6},
+                new Movimentos {MovimentosID = 5,  Data = new DateTime(2017,4,16), Valor=50.00, Moeda="Euro", Descricao ="Jantar no restaurante", DonoDoMovimentoFK =7, FamiliasFK=4, CategoriaFK=6},
+                new Movimentos {MovimentosID = 6,  Data = new DateTime(2017,4,19), Valor=30.00, Moeda="Euro", Descricao ="Visita de estudo", DonoDoMovimentoFK =6, FamiliasFK=2, CategoriaFK=6}
             };
 
-            movimento.ForEach(mm => context.Movimentos.AddOrUpdate(c => c.Data, mm));
+            movimento.ForEach(mm => context.Movimentos.AddOrUpdate(m => m.MovimentosID, mm));
             context.SaveChanges();
         }
     }

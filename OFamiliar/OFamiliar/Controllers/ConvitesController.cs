@@ -1,5 +1,4 @@
 ﻿using OFamiliar.Models;
-using OFamiliar.Models;
 using System.Data.Entity;
 using System.Net;
 using System.Threading.Tasks;

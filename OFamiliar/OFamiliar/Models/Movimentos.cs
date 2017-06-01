@@ -12,15 +12,19 @@ namespace OFamiliar.Models
         [Display(Name = "Identificador do Movimento")]
         public int MovimentosID { get; set; }
 
-        [Display(Name ="Data do Movimento")] 
+        [Display(Name = "Data do Movimento")]
         //só regista 'datas', não 'horas'
-        [Column(TypeName ="Date")]
+        [Column(TypeName = "Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime Data { get; set; }//Inicializa uma nova instância da estrutura DateTime para o ano, o mês e o dia especificados.
 
         [Required]
         [Display(Name = "Montante")]
-        public string Valor { get; set; }
+        public double Valor { get; set; }
+
+        [Required]
+        public string Moeda { get; set; }
+
         [Required]
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
@@ -39,5 +43,5 @@ namespace OFamiliar.Models
         public Categoria Categoria { get; set; }//existe para relacionar os objectos
 
 
-}
     }
+}

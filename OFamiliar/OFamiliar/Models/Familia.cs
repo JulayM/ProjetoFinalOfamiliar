@@ -17,12 +17,13 @@ namespace OFamiliar.Models
         }
         [Key]//indica que o atributo é PK
        // [DatabaseGenerated(DatabaseGeneratedOption.None)] // marcar o atributo como não auto number
-        [Display(Name = "Identificador da Familia")]
+        [Display(Name = "Identificador da Família")]
         public int FamiliaID { get; set; }
 
-        [Display(Name = "Nome da Familia")]
+        [Display(Name = "Nome da Família")]
         [Required(ErrorMessage = "O {0} é do preenchimento obrigatório...")]
-        [StringLength(30)]
+        [RegularExpression("[A-ZÍÂÓ][a-záéíóúàèìòùâêîôûãõäëïöüç']+((-| )((de|da|do|dos) )?[A-ZÍÂÓ][a-záéíóúàèìòùâêîôûãõäëïöüç']+)*",
+               ErrorMessage = "No {0} só são aceites letras. Cada nome começa, obrigatoriamente, por uma maiúscula...")]
         public string Nome { get; set; }
 
         //só regista 'datas', não 'horas'
