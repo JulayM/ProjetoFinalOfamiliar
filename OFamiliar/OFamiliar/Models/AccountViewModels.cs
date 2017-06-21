@@ -40,6 +40,7 @@ namespace OFamiliar.Models
 
     public class ForgotViewModel
     {
+
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -65,18 +66,18 @@ namespace OFamiliar.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name ="Endereço de e-mail")]
         [StringLength(30)]
                 public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name ="Chave de acesso")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirmar password")]
+        [Display(Name ="Repetir chave de acesso")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 

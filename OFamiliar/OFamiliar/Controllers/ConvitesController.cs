@@ -6,8 +6,10 @@ using System.Web.Mvc;
 
 namespace OFamiliar.Controllers
 {
+   
     public class ConvitesController : Controller
     {
+       
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Convites
@@ -33,6 +35,7 @@ namespace OFamiliar.Controllers
         }
 
         // GET: Convites/Create
+       
         public ActionResult Create()
         {
             ViewBag.DestinatarioFK = new SelectList(db.Pessoas, "PessoaID", "Nome");
@@ -47,13 +50,25 @@ namespace OFamiliar.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ConviteID,Data,Token,EmissorFK,DestinatarioFK,FamiliarFK")] Convite convite)
-        {
-            if (ModelState.IsValid)
+        {  
+            try
             {
-                db.Convites.Add(convite);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Convites.Add(convite);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (System.Exception)
+            {
+
+                // gerar uma mensagem de erro
+                // a ser entregue ao utilizador
+                ModelState.AddModelError("",
+                   "Ocorreu um erro na operação " ); 
+            }
+           
 
             ViewBag.DestinatarioFK = new SelectList(db.Pessoas, "PessoaID", "Nome", convite.DestinatarioFK);
             ViewBag.EmissorFK = new SelectList(db.Pessoas, "PessoaID", "Nome", convite.EmissorFK);
@@ -62,7 +77,7 @@ namespace OFamiliar.Controllers
         }
 
         // GET: Convites/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+             public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -86,12 +101,27 @@ namespace OFamiliar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "ConviteID,Data,Token,EmissorFK,DestinatarioFK,FamiliarFK")] Convite convite)
         {
-            if (ModelState.IsValid)
+            db.Entry(convite).State = EntityState.Modified;
+
+            try
             {
-                db.Entry(convite).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                   
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (System.Exception)
+            {
+
+                // gerar uma mensagem de erro
+                // a ser entregue ao utilizador
+                ModelState.AddModelError("",
+                   "Ocorreu um erro na operação ");
+            
+        }
+           
             ViewBag.DestinatarioFK = new SelectList(db.Pessoas, "PessoaID", "Nome", convite.DestinatarioFK);
             ViewBag.EmissorFK = new SelectList(db.Pessoas, "PessoaID", "Nome", convite.EmissorFK);
             ViewBag.FamiliarFK = new SelectList(db.Familias, "FamiliaID", "Nome", convite.FamiliarFK);
@@ -119,8 +149,23 @@ namespace OFamiliar.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Convite convite = await db.Convites.FindAsync(id);
-            db.Convites.Remove(convite);
-            await db.SaveChangesAsync();
+            try
+            {
+              
+                db.Convites.Remove(convite);
+                await db.SaveChangesAsync();
+               
+            }
+            catch (System.Exception)
+            {
+               
+
+                    // gerar uma mensagem de erro
+                    // a ser entregue ao utilizador
+                    ModelState.AddModelError("",
+                   "Ocorreu um erro na operação ");
+             
+             }
             return RedirectToAction("Index");
         }
 

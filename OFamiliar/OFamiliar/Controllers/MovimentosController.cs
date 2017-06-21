@@ -54,13 +54,26 @@ namespace OFamiliar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "MovimentosID,Data,Valor,Descricao,DonoDoMovimentoFK,FamiliasFK,CategoriaFK")] Movimentos movimentos)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Movimentos.Add(movimentos);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Movimentos.Add(movimentos);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
 
+            }
+            catch (Exception)
+            {
+
+
+                // gerar uma mensagem de erro
+                // a ser entregue ao utilizador
+                ModelState.AddModelError("",
+               "Ocorreu um erro na operação ");
+            }
+           
             ViewBag.CategoriaFK = new SelectList(db.Categorias, "CategoriaID", "Nome", movimentos.CategoriaFK);
             ViewBag.DonoDoMovimentoFK = new SelectList(db.Pessoas, "PessoaID", "Nome", movimentos.DonoDoMovimentoFK);
             ViewBag.FamiliasFK = new SelectList(db.Familias, "FamiliaID", "Nome", movimentos.FamiliasFK);
@@ -92,12 +105,28 @@ namespace OFamiliar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "MovimentosID,Data,Valor,Descricao,DonoDoMovimentoFK,FamiliasFK,CategoriaFK")] Movimentos movimentos)
         {
-            if (ModelState.IsValid)
+            db.Entry(movimentos).State = EntityState.Modified;
+            try
             {
-                db.Entry(movimentos).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+
+                }
             }
+            catch (Exception)
+            {
+
+
+                // gerar uma mensagem de erro
+                // a ser entregue ao utilizador
+                ModelState.AddModelError("",
+               "Ocorreu um erro na operação ");
+            }
+           
+           
             ViewBag.CategoriaFK = new SelectList(db.Categorias, "CategoriaID", "Nome", movimentos.CategoriaFK);
             ViewBag.DonoDoMovimentoFK = new SelectList(db.Pessoas, "PessoaID", "Nome", movimentos.DonoDoMovimentoFK);
             ViewBag.FamiliasFK = new SelectList(db.Familias, "FamiliaID", "Nome", movimentos.FamiliasFK);
@@ -125,8 +154,20 @@ namespace OFamiliar.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Movimentos movimentos = await db.Movimentos.FindAsync(id);
-            db.Movimentos.Remove(movimentos);
-            await db.SaveChangesAsync();
+            try
+            {
+                db.Movimentos.Remove(movimentos);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                // gerar uma mensagem de erro
+                // a ser entregue ao utilizador
+                ModelState.AddModelError("",
+               "Ocorreu um erro na operação ");
+            }
+         
             return RedirectToAction("Index");
         }
 

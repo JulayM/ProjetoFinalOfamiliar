@@ -19,6 +19,7 @@ namespace OFamiliar.Controllers
         public ManageController(ApplicationUserManager userManager)
         {
             UserManager = userManager;
+
         }
 
         private ApplicationUserManager _userManager;

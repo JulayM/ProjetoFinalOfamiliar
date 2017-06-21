@@ -31,6 +31,7 @@ namespace OFamiliar.Models
        
         [Display(Name = "Data de Nascimento")]
         //só regista 'datas', não 'horas'
+       // [DataType(DataType)]
         [Column(TypeName = "Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime? DataNascimento { get; set; }
@@ -50,6 +51,7 @@ namespace OFamiliar.Models
         [StringLength(9)]
         [RegularExpression("[0-9]{9}",ErrorMessage = "Escreva apenas 9 carateres numéricos...")]
         public string NIF { get; set; }
+        
         
         //****************************************************************************************
         // criar a ligação à base de dados da autenticacao

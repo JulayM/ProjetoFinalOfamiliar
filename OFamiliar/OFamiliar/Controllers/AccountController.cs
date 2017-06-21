@@ -11,12 +11,15 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace OFamiliar.Controllers
+//Aplicação para criar funções de utilizadores e exibir o menu dependendo do utilizador roles
+//Com essa classe vamos criar papel do Administrador padrão  e outros papéis e adicionar utilizadores para novo registo de utilizadores
 {
     [Authorize]
     public class AccountController : Controller
     {
         public AccountController()
         {
+            
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)

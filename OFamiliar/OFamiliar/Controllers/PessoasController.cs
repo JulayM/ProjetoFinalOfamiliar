@@ -111,8 +111,20 @@ namespace OFamiliar.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Pessoas pessoas = await db.Pessoas.FindAsync(id);
-            db.Pessoas.Remove(pessoas);
-            await db.SaveChangesAsync();
+            try
+            {
+                db.Pessoas.Remove(pessoas);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                // gerar uma mensagem de erro
+                // a ser entregue ao utilizador
+                ModelState.AddModelError("",
+               "Ocorreu um erro na operação ");
+            }
+           
+            
             return RedirectToAction("Index");
         }
 

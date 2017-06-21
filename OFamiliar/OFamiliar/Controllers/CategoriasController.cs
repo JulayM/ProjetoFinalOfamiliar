@@ -49,13 +49,22 @@ namespace OFamiliar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "CategoriaID,Nome,Tipo")] Categoria categoria)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Categorias.Add(categoria);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Categorias.Add(categoria);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
             return View(categoria);
         }
 
@@ -81,12 +90,26 @@ namespace OFamiliar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "CategoriaID,Nome,Tipo")] Categoria categoria)
         {
-            if (ModelState.IsValid)
+            db.Entry(categoria).State = EntityState.Modified;
+            try
             {
-                db.Entry(categoria).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (Exception)
+            {
+
+
+                // gerar uma mensagem de erro
+                // a ser entregue ao utilizador
+                ModelState.AddModelError("",
+               "Ocorreu um erro na operação ");
+            }
+           
             return View(categoria);
         }
 
