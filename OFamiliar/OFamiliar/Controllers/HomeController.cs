@@ -9,7 +9,7 @@ namespace OFamiliar.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";

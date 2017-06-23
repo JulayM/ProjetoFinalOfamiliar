@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace OFamiliar.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Administrador")]
     public class UsersAdminController : Controller
     {
         public UsersAdminController()

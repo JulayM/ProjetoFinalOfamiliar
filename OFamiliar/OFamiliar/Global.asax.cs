@@ -17,5 +17,11 @@ namespace OFamiliar
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Session_Start() {
+            Session["Sucesso"] = false;
+            Session["Erro"] = false;
+            Session["mensagem"] = "";
+        }
     }
 }

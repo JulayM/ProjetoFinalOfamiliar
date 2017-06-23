@@ -190,6 +190,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Ferramentas.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
+    <Compile Include="Controllers\Convites1Controller.cs" />
     <Compile Include="Controllers\ConvitesController.cs" />
     <Compile Include="Controllers\FamiliasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -233,9 +235,10 @@
     <Content Include="Content\freelancer.css" />
     <Content Include="Content\freelancer.min.css" />
     <Content Include="Content\imag\conta.jpg" />
-    <Content Include="Content\imag\conta1.png" />
-    <Content Include="Content\imag\conta2.jpg" />
+    <Content Include="Content\imag\conta1.jpg" />
     <Content Include="Content\imag\conta3.jpg" />
+    <Content Include="Content\imag\logotipo.png" />
+    <Content Include="Content\imag\rascunho.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -329,7 +332,9 @@
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Account\ConfirmaCriacaoUtilizador.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Convites1\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

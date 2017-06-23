@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using OFamiliar.Models;
 
@@ -54,8 +50,8 @@ namespace OFamiliar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "MovimentosID,Data,Valor,Descricao,DonoDoMovimentoFK,FamiliasFK,CategoriaFK")] Movimentos movimentos)
         {
-            try
-            {
+            
+            
                 if (ModelState.IsValid)
                 {
                     db.Movimentos.Add(movimentos);
@@ -63,17 +59,6 @@ namespace OFamiliar.Controllers
                     return RedirectToAction("Index");
                 }
 
-            }
-            catch (Exception)
-            {
-
-
-                // gerar uma mensagem de erro
-                // a ser entregue ao utilizador
-                ModelState.AddModelError("",
-               "Ocorreu um erro na operação ");
-            }
-           
             ViewBag.CategoriaFK = new SelectList(db.Categorias, "CategoriaID", "Nome", movimentos.CategoriaFK);
             ViewBag.DonoDoMovimentoFK = new SelectList(db.Pessoas, "PessoaID", "Nome", movimentos.DonoDoMovimentoFK);
             ViewBag.FamiliasFK = new SelectList(db.Familias, "FamiliaID", "Nome", movimentos.FamiliasFK);
@@ -106,8 +91,7 @@ namespace OFamiliar.Controllers
         public async Task<ActionResult> Edit([Bind(Include = "MovimentosID,Data,Valor,Descricao,DonoDoMovimentoFK,FamiliasFK,CategoriaFK")] Movimentos movimentos)
         {
             db.Entry(movimentos).State = EntityState.Modified;
-            try
-            {
+           
                 if (ModelState.IsValid)
                 {
 
@@ -115,16 +99,10 @@ namespace OFamiliar.Controllers
                     return RedirectToAction("Index");
 
                 }
-            }
-            catch (Exception)
-            {
+           
 
 
-                // gerar uma mensagem de erro
-                // a ser entregue ao utilizador
-                ModelState.AddModelError("",
-               "Ocorreu um erro na operação ");
-            }
+            
            
            
             ViewBag.CategoriaFK = new SelectList(db.Categorias, "CategoriaID", "Nome", movimentos.CategoriaFK);
@@ -154,19 +132,10 @@ namespace OFamiliar.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Movimentos movimentos = await db.Movimentos.FindAsync(id);
-            try
-            {
+           
                 db.Movimentos.Remove(movimentos);
                 await db.SaveChangesAsync();
-            }
-            catch (Exception)
-            {
-
-                // gerar uma mensagem de erro
-                // a ser entregue ao utilizador
-                ModelState.AddModelError("",
-               "Ocorreu um erro na operação ");
-            }
+           
          
             return RedirectToAction("Index");
         }

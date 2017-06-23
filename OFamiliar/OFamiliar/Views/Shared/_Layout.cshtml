@@ -23,22 +23,47 @@
               
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">                   
-                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                <ul class="nav navbar-nav">
+                    @* visitantes *@
                     <li>@Html.ActionLink("Sobre", "About", "Home")</li>
-
-                    @if (User.IsInRole("MembroFamiliar"))
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    @* só utilizadores autenticados têm acesso a essas páginas *@
+                    @if (User.Identity.IsAuthenticated)
                     {
-                          <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administração<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Convites", "Index", "Convites")</li>
+                                <li>@Html.ActionLink("Familias", "Index", "Familias")</li>
+                                <li>@Html.ActionLink("Movimentos", "Index", "Movimentos")</li>
+                            </ul>
+                        </li>
                     }
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
-                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                    @*@if (User.IsInRole("MembroFamiliar"))
+            {
+                <li>@Html.ActionLink("Convites", "Index", "Convites")</li>
+                <li>@Html.ActionLink("Familias", "Index", "Familias")</li>
+                <li>@Html.ActionLink("Movimentos", "Index", "Movimentos")</li>
+            }*@
+                    @* só o Administrador tém acesso a essas páginas *@
+                    @if (User.IsInRole("Administrador"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administração<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                <li>@Html.ActionLink("Categorias", "Index", "Categorias")</li>
+                            </ul>
+                        </li>
                     }
                 </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+
+
+
+                        @Html.Partial("_LoginPartial")
+</div>
         </div>
     </div>
     <div class="container body-content">

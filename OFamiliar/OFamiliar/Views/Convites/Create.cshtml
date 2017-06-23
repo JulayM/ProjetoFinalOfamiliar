@@ -30,13 +30,16 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.FamiliarFK, "Nome da Familia", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FamiliarFK, "Nome da Família", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("FamiliarFK", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.FamiliarFK, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
+        @*
+            Estes dados são introduzidos pelo Controller
+            
+            <div class="form-group">
             @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
@@ -50,7 +53,7 @@
                 @Html.EditorFor(model => model.Token, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Token, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Criar" class="btn btn-default" />
