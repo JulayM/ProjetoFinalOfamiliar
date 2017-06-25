@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                    
+                   
                     @Html.ActionLink("Orçamento Famíliar", "Index", "Home", null, new { @class = "navbar-brand" })
 
               
@@ -25,6 +25,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @* visitantes *@
+            
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Sobre", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                     @* só utilizadores autenticados têm acesso a essas páginas *@
