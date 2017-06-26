@@ -1,13 +1,14 @@
 ﻿@model OFamiliar.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Criar conta";
+    ViewBag.Title = "Register";
 }
 
-<h1 style="font-weight:bold">@ViewBag.Title.</h1>
+<h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Registar", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
+    <h4>Criar nova conta.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
@@ -60,13 +61,6 @@
             @Html.LabelFor(model => model.Genero, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Genero, new { htmlAttributes = new { @class = "form-control" } })
-                @*<span class="radio-inline"><input type="radio" name="optradio"> Mulher </span>
-                <span class="radio-inline"><input type="radio" name="optradio"> Homem </span>*@
-                @*@Html.RadioButtonFor(model => model.Genero, "false", new { id = "male" })
-                @Html.Label("male", "Male")
-
-                @Html.RadioButtonFor(model => model.Genero, "true", new { id = "female" })
-                @Html.Label("female", "Female")*@
                 @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
             </div>
         </div>

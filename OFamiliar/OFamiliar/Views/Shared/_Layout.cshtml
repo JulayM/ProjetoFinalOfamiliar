@@ -45,12 +45,12 @@
                         </li>
                     }
 
-                    @*@if (User.IsInRole("MembroFamiliar"))
+                    @if (User.IsInRole("MembroFamiliar"))
             {
                 <li>@Html.ActionLink("Convites", "Index", "Convites")</li>
                 <li>@Html.ActionLink("Familias", "Index", "Familias")</li>
                 <li>@Html.ActionLink("Movimentos", "Index", "Movimentos")</li>
-            }*@
+            }
                     @* só o Administrador tém acesso a essas páginas *@
                     @if (User.IsInRole("Administrador"))
                     {
