@@ -19,6 +19,10 @@ namespace OFamiliar.Models
             return userIdentity;
         }
     }
+
+
+
+
     //Representa a base de dados enditity
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -29,6 +33,7 @@ namespace OFamiliar.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
         //outro construtor...
         static ApplicationDbContext()
         {
@@ -36,11 +41,13 @@ namespace OFamiliar.Models
             // This seeds the database with admin user credentials and admin role
             Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
         }
+
         //define o método 'Create'
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
         //**********************************************************************************
         // colocar aqui o código que define a minha tabelas
         //**********************************************************************************
@@ -69,6 +76,7 @@ namespace OFamiliar.Models
                        .WithMany(p => p.ListaConvitesEmitidos)
                        .HasForeignKey(c => c.EmissorFK)
                        .WillCascadeOnDelete(false);
+
             // não podemos usar a chave seguinte, nesta geração de tabelas
             // por causa das tabelas do Identity (gestão de utilizadores)
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

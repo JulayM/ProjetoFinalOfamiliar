@@ -1,9 +1,12 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using OFamiliar.Models;
+
+using System.Linq;
+
+
 
 namespace OFamiliar.Controllers
 {
@@ -15,8 +18,15 @@ namespace OFamiliar.Controllers
         // GET: Movimentos
         public async Task<ActionResult> Index()
         {
-            var movimentos = db.Movimentos.Include(m => m.Categoria).Include(m => m.DonoDoMovimento).Include(m => m.Familia);
-            return View(await movimentos.ToListAsync());
+            var movimentos = db.Movimentos
+                                     .Include(m => m.Categoria)
+                                     .Include(m => m.DonoDoMovimento)
+                                     .Include(m => m.Familia)
+                                     .Where(p => p.DonoDoMovimento.UserName.Equals(User.Identity.Name))
+                                     .OrderByDescending(m => m.Data)
+                                     .ToListAsync();
+
+            return View(await movimentos);
         }
 
         // GET: Movimentos/Details/5
@@ -38,8 +48,15 @@ namespace OFamiliar.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoriaFK = new SelectList(db.Categorias, "CategoriaID", "Nome");
-            ViewBag.DonoDoMovimentoFK = new SelectList(db.Pessoas, "PessoaID", "Nome");
-            ViewBag.FamiliasFK = new SelectList(db.Familias, "FamiliaID", "Nome");
+
+            // lista de famílias da pessoa q se autentica
+            var listaDeFamilias = (from f in db.Familias
+                                   from p in f.ListaDeMembros
+                                   where p.UserName.Equals(User.Identity.Name)
+                                   select f);
+            // mostra no ecrã a lista de famílias
+            ViewBag.FamiliasFK = new SelectList(listaDeFamilias, "FamiliaID", "Nome");
+
             return View();
         }
 
@@ -48,21 +65,32 @@ namespace OFamiliar.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "MovimentosID,Data,Valor,Descricao,DonoDoMovimentoFK,FamiliasFK,CategoriaFK")] Movimentos movimentos)
+        public async Task<ActionResult> Create([Bind(Include = "Data,Valor,Moeda,Descricao,FamiliasFK,CategoriaFK")] Movimentos movimento)
         {
-            
-            
+
+            try
+            {
+
+                // adicionar o 'dono do movimento'
+                movimento.DonoDoMovimento = db.Pessoas.Where(p => p.UserName.Equals(User.Identity.Name)).FirstOrDefault();
+
                 if (ModelState.IsValid)
                 {
-                    db.Movimentos.Add(movimentos);
+                    db.Movimentos.Add(movimento);
                     await db.SaveChangesAsync();
+                    // falta msg de aviso q correu bem
                     return RedirectToAction("Index");
                 }
-
-            ViewBag.CategoriaFK = new SelectList(db.Categorias, "CategoriaID", "Nome", movimentos.CategoriaFK);
-            ViewBag.DonoDoMovimentoFK = new SelectList(db.Pessoas, "PessoaID", "Nome", movimentos.DonoDoMovimentoFK);
-            ViewBag.FamiliasFK = new SelectList(db.Familias, "FamiliaID", "Nome", movimentos.FamiliasFK);
-            return View(movimentos);
+                            }
+            catch (System.Exception)
+            {
+                // escrever msg a dizer que correu mal ...
+                ModelState.AddModelError("", "Ocorreu um erro na operação... ");
+            }
+            ViewBag.CategoriaFK = new SelectList(db.Categorias, "CategoriaID", "Nome", movimento.CategoriaFK);
+            ViewBag.DonoDoMovimentoFK = new SelectList(db.Pessoas, "PessoaID", "Nome", movimento.DonoDoMovimentoFK);
+            ViewBag.FamiliasFK = new SelectList(db.Familias, "FamiliaID", "Nome", movimento.FamiliasFK);
+            return View(movimento);
         }
 
         // GET: Movimentos/Edit/5
@@ -91,20 +119,20 @@ namespace OFamiliar.Controllers
         public async Task<ActionResult> Edit([Bind(Include = "MovimentosID,Data,Valor,Descricao,DonoDoMovimentoFK,FamiliasFK,CategoriaFK")] Movimentos movimentos)
         {
             db.Entry(movimentos).State = EntityState.Modified;
-           
-                if (ModelState.IsValid)
-                {
 
-                    await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
 
-                }
-           
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+
+            }
 
 
-            
-           
-           
+
+
+
+
             ViewBag.CategoriaFK = new SelectList(db.Categorias, "CategoriaID", "Nome", movimentos.CategoriaFK);
             ViewBag.DonoDoMovimentoFK = new SelectList(db.Pessoas, "PessoaID", "Nome", movimentos.DonoDoMovimentoFK);
             ViewBag.FamiliasFK = new SelectList(db.Familias, "FamiliaID", "Nome", movimentos.FamiliasFK);
@@ -132,11 +160,11 @@ namespace OFamiliar.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Movimentos movimentos = await db.Movimentos.FindAsync(id);
-           
-                db.Movimentos.Remove(movimentos);
-                await db.SaveChangesAsync();
-           
-         
+
+            db.Movimentos.Remove(movimentos);
+            await db.SaveChangesAsync();
+
+
             return RedirectToAction("Index");
         }
 

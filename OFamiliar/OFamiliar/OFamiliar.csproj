@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ConvitesController.cs" />
     <Compile Include="Controllers\FamiliasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LixoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MovimentosController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
@@ -334,6 +335,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Convites1\" />
+    <Folder Include="Views\Lixo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

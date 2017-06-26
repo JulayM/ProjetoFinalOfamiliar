@@ -140,7 +140,10 @@ namespace OFamiliar.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 //procurar o convite q tem este TOKEN
-                Convite convite = db.Convites.Where(c => c.Token.Equals(id)).Where(c => c.EstadoDoConvite.Equals("pendente")).FirstOrDefault();
+                Convite convite = db.Convites
+                                        .Where(c => c.Token.Equals(id))
+                                        .Where(c => c.EstadoDoConvite.Equals("pendente"))
+                                        .FirstOrDefault();
 
                 if (convite == null)
                 {   // O TOKEN não identificou nenhum Convite válido

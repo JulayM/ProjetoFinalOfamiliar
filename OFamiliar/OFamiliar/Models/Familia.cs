@@ -38,8 +38,6 @@ namespace OFamiliar.Models
 
         // lista os 'membros' de uma família
         public virtual ICollection<Pessoas> ListaDeMembros { get; set; }
-
-     
-        
+        public object FamiliarFK { get; internal set; }
     }
 }

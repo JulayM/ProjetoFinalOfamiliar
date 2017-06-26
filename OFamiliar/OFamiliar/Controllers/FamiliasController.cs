@@ -66,6 +66,7 @@ namespace OFamiliar.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.FamiliarFK = new SelectList(db.Familias, "FamiliaID", "Nome", familia.FamiliarFK);
             return View(familia);
         }
 
@@ -97,6 +98,7 @@ namespace OFamiliar.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.FamiliarFK = new SelectList(db.Familias, "FamiliaID", "Nome", familia.FamiliarFK);
             return View(familia);
         }
 
