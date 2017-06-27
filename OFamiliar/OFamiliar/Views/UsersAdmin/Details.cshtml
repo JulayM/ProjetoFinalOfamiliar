@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details.</h2>
+<h1>Detalhes</h1>
 
 <div>
-    <h4>User</h4>
+    <h4>Utilizador</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -18,11 +18,11 @@
         </dd>
     </dl>
 </div>
-<h4>List of roles for this user</h4>
+<h4>Lista de funções para este utilizador</h4>
 @if (ViewBag.RoleNames.Count == 0)
 {
     <hr />
-    <p>No roles found for this user.</p>
+    <p>Nenhuma função encontrada para este utilizador.</p>
 }
 
 <table class="table">
@@ -37,8 +37,8 @@
     }
 </table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" }) 
+    @Html.ActionLink("Regressar a  Listagem", "Index", new { id = "" }, new { @class = "btn btn-primary" })
 </p>
 
 

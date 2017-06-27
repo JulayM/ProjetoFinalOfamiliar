@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h1>Categorias</h1>
 
-<p>
-    @Html.ActionLink("Criar nova categoria", "Create")
-</p>
+<button style="background-color:cornflowerblue; border:none; border-radius: 5px ">
+    @Html.ActionLink("Criar nova categoria", "Create", new { id = "" }, new { @style = "color:#FFFFFF;text-decoration:none" })
+</button><br /><br />
 <table class="table">
     <tr>
         <th>

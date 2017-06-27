@@ -7,13 +7,14 @@ namespace OFamiliar.Models
     public class Convite
     {
         [Key]//Indica que o atributo é PK
-       // [DatabaseGenerated(DatabaseGeneratedOption.None)] // marcar o atributo como não auto number
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)] // marcar o atributo como não auto number
         [Display(Name = "Identificador do Convite")]
         public int ConviteID { get; set; }
 
         //só regista 'datas', não 'horas'
         [Column(TypeName = "Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+       // [RegularExpression("([0-9]{4}-[0-9]{2}-[0-9]{2})*", ErrorMessage = "No {0} só é aceite o formato yyyy-MM-dd")]
         public DateTime Data { get; set; }
 
         public string Token { get; set; } // código que identifica o convite de forma única

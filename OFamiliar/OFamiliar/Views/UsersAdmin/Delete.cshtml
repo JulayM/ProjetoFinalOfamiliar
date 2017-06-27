@@ -6,8 +6,8 @@
 
 <h2>Delete.</h2>
 
-<h3>Are you sure you want to delete this User?</h3>
-<div>
+<h3>Quer realmente apagar este registo?</h3>
+<div style="background-color:mediumturquoise">
     <h4>User.</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -24,8 +24,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Remover" class="btn btn-danger" /> 
+            @Html.ActionLink("Regressar a  Listagem", "Index", new { id = "" }, new { @class = "btn btn-primary" })
         </div>
     }
 </div>

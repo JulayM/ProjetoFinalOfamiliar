@@ -7,7 +7,7 @@
 <h2>Apagar</h2>
 
 <h3>Quer realmente apagar este registo?</h3>
-<div>
+<div style="background-color:mediumturquoise">
  
     <hr />
     <dl class="dl-horizontal">
@@ -65,8 +65,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Regressar a  Listagem", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Regressar a  Listagem", "Index", new { id = "" }, new { @class = "btn btn-primary" })
         </div>
     }
 </div>

@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h1>Roles</h1>
 
-<p>
-    @Html.ActionLink("Cria novo utilizador", "Create")
-</p>
+<button style="background-color:cornflowerblue; border:none; border-radius: 5px ">
+    @Html.ActionLink("Cria novo utilizador", "Create", new { id = "" }, new { @style = "color:#FFFFFF;text-decoration:none" })
+</button>
 <table class="table">
     <tr>
         <th>

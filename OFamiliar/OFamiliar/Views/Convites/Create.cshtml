@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Criar</h2>
+<h1>Enviar novo convite</h1>
 
 
 @using (Html.BeginForm()) 
@@ -63,7 +63,7 @@
 }
 
 <div>
-    @Html.ActionLink("Regressar a  Listagem", "Index")
+    @Html.ActionLink("Regressar a  Listagem", "Index", new { id = "" }, new { @class = "btn btn-primary" })
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

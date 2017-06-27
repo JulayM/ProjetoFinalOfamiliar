@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OFamiliar.Models
 {
@@ -14,6 +15,7 @@ namespace OFamiliar.Models
         }
         //indica que o atributo é PK
         [Key]
+    //    [DatabaseGenerated(DatabaseGeneratedOption.None)] // marcar o atributo como não auto number
         [Display(Name = "Identificador de Categoria")]
         public int CategoriaID { get; set; }
 

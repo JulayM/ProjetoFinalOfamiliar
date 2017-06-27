@@ -4,39 +4,39 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h1>Famílias</h1>
 
-<p>
-    @Html.ActionLink("Criar nova Família", "Create")
-</p>
-<div class="container">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataDeCriacao)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+<button style="background-color:cornflowerblue; border:none; border-radius: 5px ">
+    @Html.ActionLink("Criar nova Família", "Create", new { id = "" }, new { @style = "color:#FFFFFF;text-decoration:none" })
+</button>
+    <div class="container">
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataDeCriacao)
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.FamiliaID })
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.FamiliaID })
-                    @Html.ActionLink("Apagar", "Delete", new { id = item.FamiliaID })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataDeCriacao)
+                </th>
+                <th></th>
             </tr>
-        }
 
-    </table>
-</div>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataDeCriacao)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.FamiliaID }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.FamiliaID }, new { @class = "btn btn-warning" })
+                        @Html.ActionLink("Apagar", "Delete", new { id = item.FamiliaID }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>

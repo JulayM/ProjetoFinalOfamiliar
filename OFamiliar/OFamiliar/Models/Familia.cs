@@ -16,7 +16,7 @@ namespace OFamiliar.Models
         ListaDeMembros = new HashSet<Pessoas>();
         }
         [Key]//indica que o atributo é PK
-       // [DatabaseGenerated(DatabaseGeneratedOption.None)] // marcar o atributo como não auto number
+       //[DatabaseGenerated(DatabaseGeneratedOption.None)] // marcar o atributo como não auto number
         [Display(Name = "Identificador da Família")]
         public int FamiliaID { get; set; }
 
@@ -29,6 +29,7 @@ namespace OFamiliar.Models
         //só regista 'datas', não 'horas'
         [Column(TypeName = "Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [RegularExpression("([0-9]{4})-([0-9]{2})-([0-9]{2})", ErrorMessage = "No {0} só é aceite o formato yyyy-MM-dd")]
         [Display(Name = "Data da Criação")]
         public DateTime DataDeCriacao { get; set; }
         // lista os 'movimentos' de uma família

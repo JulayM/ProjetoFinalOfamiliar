@@ -33,7 +33,8 @@
                     <li>@Html.ActionLink("Sobre", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                     @* só utilizadores autenticados têm acesso a essas páginas *@
-                    @if (User.Identity.IsAuthenticated)
+                
+                    @if (User.IsInRole("MembroFamiliar"))
                     {
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MembroFamíliar<span class="caret"></span></a>
@@ -43,15 +44,8 @@
                                 <li>@Html.ActionLink("Movimentos", "Index", "Movimentos")</li>
                             </ul>
                         </li>
-                    }
-
-                    @if (User.IsInRole("MembroFamiliar"))
-            {
-                <li>@Html.ActionLink("Convites", "Index", "Convites")</li>
-                <li>@Html.ActionLink("Familias", "Index", "Familias")</li>
-                <li>@Html.ActionLink("Movimentos", "Index", "Movimentos")</li>
-            }
-                    @* só o Administrador tém acesso a essas páginas *@
+                   }
+                     @*só o Administrador tém acesso a essas páginas*@ 
                     @if (User.IsInRole("Administrador"))
                     {
                         <li class="dropdown">

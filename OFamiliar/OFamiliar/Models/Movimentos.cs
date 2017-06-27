@@ -16,6 +16,7 @@ namespace OFamiliar.Models
         //só regista 'datas', não 'horas'
         [Column(TypeName = "Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+      //  [RegularExpression("([0-9]{4})-([0-9]{2})-([0-9]{2})", ErrorMessage = "No {0} só é aceite o formato yyyy-MM-dd")]
         public DateTime Data { get; set; }//Inicializa uma nova instância da estrutura DateTime para o ano, o mês e o dia especificados.
 
         [Required]
@@ -26,7 +27,7 @@ namespace OFamiliar.Models
         public string Moeda { get; set; }
 
         [Required]
-        [Display(Name = "Descrição")]
+        [Display(Name = "Descrição do Movimento")]
         public string Descricao { get; set; }
 
         //***************************************************************************

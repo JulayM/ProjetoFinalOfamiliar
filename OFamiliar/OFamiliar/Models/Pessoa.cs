@@ -18,7 +18,7 @@ namespace OFamiliar.Models
         }
 
         [Key]//indica que o atributo é um chave primaria "PK"
-       // [DatabaseGenerated(DatabaseGeneratedOption.None)] // marcar o atributo como não auto number
+       //[DatabaseGenerated(DatabaseGeneratedOption.None)] // marcar o atributo como não auto number
         [Display(Name = "Identificador da Pessoa")]
         public int PessoaID { get; set; }
 
@@ -34,25 +34,26 @@ namespace OFamiliar.Models
        // [DataType(DataType)]
         [Column(TypeName = "Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [RegularExpression("([0-9]{4})-([0-9]{2})-([0-9]{2})", ErrorMessage = "No {0} só é aceite o formato yyyy-MM-dd")]
         public DateTime? DataNascimento { get; set; }
 
         [RegularExpression("[A-Za-z0-9._-]+@[A-Za-z0-9.-_]+.[A-Za-z]{2,4}", ErrorMessage = "O endereço do e-mail não é valido.")]
         [StringLength(30)]
         public string Email { get; set; }
 
-        [StringLength(9)]
-        [RegularExpression("[0-9]{9}", ErrorMessage = "O {0} não é valido.")]
+        [Display(Name = "Telemóvel")]
+        [RegularExpression("[0-9]{9}", ErrorMessage = "O Contacto é composto por 9 caracteres Numéricos")]
         public string Telefone { get; set; }
 
+        [Display(Name = "Género")]
         [StringLength(1)]
         public string Genero { get; set; }
 
         [Required]
         [StringLength(9)]
-        [RegularExpression("[0-9]{9}",ErrorMessage = "Escreva apenas 9 carateres numéricos...")]
+        [RegularExpression("[0-9]{9}",ErrorMessage = "O NIF tem de ter 9 caracteres Numéricos")]
         public string NIF { get; set; }
-        
-        
+       
         //****************************************************************************************
         // criar a ligação à base de dados da autenticacao
         public string UserName { get; set; }

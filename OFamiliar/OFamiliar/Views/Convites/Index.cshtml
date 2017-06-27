@@ -9,7 +9,7 @@
 
 <p>
     <button style="background-color:cornflowerblue;color:white; border:none; border-radius: 5px ">
-        @Html.ActionLink("Enviar novo convite", "Create")
+        @Html.ActionLink("Enviar novo convite", "Create", new { id = "" }, new { @style = "color:#FFFFFF;text-decoration:none" })
     </button>
 </p>
 <table class="table">
@@ -50,9 +50,9 @@
             @Html.DisplayFor(modelItem => item.Token)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ConviteID }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.ConviteID }) |
-            @Html.ActionLink("Apagar", "Delete", new { id=item.ConviteID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ConviteID }, new { @class = "btn btn-success" }) 
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ConviteID }, new { @class = "btn btn-warning" }) 
+            @Html.ActionLink("Apagar", "Delete", new { id=item.ConviteID }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

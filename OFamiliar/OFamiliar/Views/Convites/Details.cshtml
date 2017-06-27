@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Detalhes</h2>
+<h1>Detalhes do convite</h1>
 
 <div>
   
@@ -53,6 +53,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ConviteID }) |
-    @Html.ActionLink("Regressar a  Listagem", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ConviteID }, new { @class = "btn btn-success" }) 
+    @Html.ActionLink("Regressar a  Listagem", "Index", new { id = "" }, new { @class = "btn btn-primary" })
 </p>
