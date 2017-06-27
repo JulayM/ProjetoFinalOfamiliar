@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Editar</h2>
+<h2>Editar categoria</h2>
 
 
 @using (Html.BeginForm())
@@ -42,7 +42,9 @@
 }
 
 <div>
-    @Html.ActionLink("Regressar a  Listagem", "Index")
+    <button style="background-color:cornflowerblue; border:none; border-radius: 5px ">
+        @Html.ActionLink("Regressar a  Listagem", "Index", new { id = "" }, new { @style = "color:#FFFFFF;text-decoration:none" })
+    </button>
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

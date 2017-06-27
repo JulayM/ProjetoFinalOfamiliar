@@ -58,7 +58,7 @@ namespace OFamiliar.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Lembrar-me?")]
         public bool RememberMe { get; set; }
     }
 
@@ -68,17 +68,17 @@ namespace OFamiliar.Models
         [EmailAddress]
         [Display(Name ="Endereço de e-mail")]
         [StringLength(30)]
-                public string Email { get; set; }
+        public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "A {0} deve ter no minimo {2} carateres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name ="Chave de acesso")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name ="Repetir chave de acesso")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "As passwords não correspondem")]
         public string ConfirmPassword { get; set; }
 
         //***********************************************************
@@ -123,14 +123,14 @@ namespace OFamiliar.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "A {0} deve ter no minimo {2} carateres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "As passwords não correspondem")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

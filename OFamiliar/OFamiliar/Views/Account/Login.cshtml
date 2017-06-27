@@ -39,19 +39,14 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                        <input type="submit" value="Entrar" class="btn btn-default" />
                     </div>
                 </div>
                 <p>
-                    @Html.ActionLink("Não consegue aceder à sua conta?", "ForgotPassword")
-                    @Html.ActionLink("Quer criar uma nova conta ?", "Register")
+                    @Html.ActionLink("Não consegue aceder à sua conta?", "ForgotPassword", new { id = "" }, new { @style = "color:#149c82" })
+                    @Html.ActionLink("Quer criar uma nova conta ?", "Register", new { id = "" }, new { @style = "color:#149c82" })
                 </p>
             }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new OFamiliar.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
 </div>

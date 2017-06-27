@@ -77,12 +77,24 @@ namespace OFamiliar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "FamiliaID,Nome,DataDeCriacao")] Familia familia)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(familia).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(familia).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (System.Exception)
+            {
+
+                // gerar uma mensagem de erro
+                // a ser entregue ao utilizador
+                ModelState.AddModelError("",
+               "Ocorreu um erro na operação ");
+            }
+           
             return View(familia);
         }
 

@@ -238,8 +238,8 @@
     <Content Include="Content\imag\conta.jpg" />
     <Content Include="Content\imag\conta1.jpg" />
     <Content Include="Content\imag\conta3.jpg" />
+    <Content Include="Content\imag\ju.JPG" />
     <Content Include="Content\imag\logotipo.png" />
-    <Content Include="Content\imag\rascunho.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

@@ -49,12 +49,24 @@ namespace OFamiliar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "PessoaID,Nome,DataNascimento,Email,Telefone,Genero,NIF")] Pessoas pessoas)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Pessoas.Add(pessoas);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Pessoas.Add(pessoas);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (Exception)
+            {
+
+                // gerar uma mensagem de erro
+                // a ser entregue ao utilizador
+                ModelState.AddModelError("",
+               "Ocorreu um erro na operação ");
+            }
+           
 
             return View(pessoas);
         }

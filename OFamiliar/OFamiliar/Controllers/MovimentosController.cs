@@ -79,6 +79,7 @@ namespace OFamiliar.Controllers
                     db.Movimentos.Add(movimento);
                     await db.SaveChangesAsync();
                     // falta msg de aviso q correu bem
+                    TempData["Successo"] = "Movimento criado  com sucesso!";
                     return RedirectToAction("Index");
                 }
                             }
@@ -116,7 +117,7 @@ namespace OFamiliar.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "MovimentosID,Data,Valor,Descricao,DonoDoMovimentoFK,FamiliasFK,CategoriaFK")] Movimentos movimentos)
+        public async Task<ActionResult> Edit([Bind(Include = "MovimentosID,Data,Valor,Moeda,Descricao,DonoDoMovimentoFK,FamiliasFK,CategoriaFK")] Movimentos movimentos)
         {
             db.Entry(movimentos).State = EntityState.Modified;
 
@@ -127,12 +128,6 @@ namespace OFamiliar.Controllers
                 return RedirectToAction("Index");
 
             }
-
-
-
-
-
-
             ViewBag.CategoriaFK = new SelectList(db.Categorias, "CategoriaID", "Nome", movimentos.CategoriaFK);
             ViewBag.DonoDoMovimentoFK = new SelectList(db.Pessoas, "PessoaID", "Nome", movimentos.DonoDoMovimentoFK);
             ViewBag.FamiliasFK = new SelectList(db.Familias, "FamiliaID", "Nome", movimentos.FamiliasFK);

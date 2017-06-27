@@ -150,7 +150,9 @@ namespace OFamiliar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            try
+            {
+                if (ModelState.IsValid)
             {
                 // criar o Utilizador
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -187,6 +189,13 @@ namespace OFamiliar.Controllers
                 AddErrors(result);
             }
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
             // If we got this far, something failed, redisplay form
             return View(model);
         }

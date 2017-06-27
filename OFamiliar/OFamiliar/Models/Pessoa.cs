@@ -34,7 +34,7 @@ namespace OFamiliar.Models
        // [DataType(DataType)]
         [Column(TypeName = "Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [RegularExpression("([0-9]{4})-([0-9]{2})-([0-9]{2})", ErrorMessage = "No {0} só é aceite o formato yyyy-MM-dd")]
+       // [RegularExpression("([0-9]{4})-([0-9]{2})-([0-9]{2})", ErrorMessage = "No {0} só é aceite o formato yyyy-MM-dd")]
         public DateTime? DataNascimento { get; set; }
 
         [RegularExpression("[A-Za-z0-9._-]+@[A-Za-z0-9.-_]+.[A-Za-z]{2,4}", ErrorMessage = "O endereço do e-mail não é valido.")]

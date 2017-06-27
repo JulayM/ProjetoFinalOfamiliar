@@ -29,7 +29,7 @@ namespace OFamiliar.Models
         //só regista 'datas', não 'horas'
         [Column(TypeName = "Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [RegularExpression("([0-9]{4})-([0-9]{2})-([0-9]{2})", ErrorMessage = "No {0} só é aceite o formato yyyy-MM-dd")]
+     //   [RegularExpression("([0-9]{4}-[0-9]{2}-[0-9]{2})*", ErrorMessage = "No {0} só é aceite o formato yyyy-MM-dd")]
         [Display(Name = "Data da Criação")]
         public DateTime DataDeCriacao { get; set; }
         // lista os 'movimentos' de uma família

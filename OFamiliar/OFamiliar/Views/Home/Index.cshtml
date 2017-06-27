@@ -2,12 +2,13 @@
     ViewBag.Title = "Página inicial";
 }
 
-@*<div class="row">
-    <div>*@
+<div class="row">
+    <div>
         @* ##################################################################################################### *@
         @* utiliza os dados da var. SUCESSO para apresentar ao utilizador uma mensagem de aviso, sobre o sucesso *@
+
         @{
-            @*if ((bool)Session["Sucesso"])
+            if ((bool)Session["Sucesso"])
             {
                 <div id="msg" class="alert alert-success fade in">
                     <a href="#" class="close" data-dismiss="alert" aria-label="fechar">&times;</a>
@@ -19,18 +20,19 @@
                 <div id="msg" class="alert alert-danger fade in">
                     <a href="#" class="close" data-dismiss="alert" aria-label="fechar">&times;</a>
                     <b>Erro:</b> @Session["mensagem"]
-                </div>*@
+                </div>
             }
-            @*// limpa conteúdo da var. de sessão
+            // limpa conteúdo da var. de sessão
             Session["Sucesso"] = false;
             Session["Erro"] = false;
             Session["mensagem"] = "";
-        }*@
-        @* ##################################################################################################### *@
+        }
+      
 
-    @*</div>
-</div>*@
-@*<div style="text-align:center"><img src="../Content/imag/logotipo.png" /></div>*@
+    </div>
+</div>
+   @*#####################################################################################################*@ 
+@*<div style="text-align:center"><img src="../Content/imag/logotipo.png" /></div>
 @*<div class="jumbotron">*@
 <br />
     <div id="meuSlider" class="carousel slide" data-ride="carousel">
@@ -51,29 +53,11 @@
 
 <br /><div class="well" style="text-align:center ; background-color:cadetblue">
     <p class="lead">
-        Você acaba de encontrar o melhor site para fazer gerir as tuas contas online!<br />
-        Inscreve-te e convida os membros da tua família e nós fazemos tudo ! visite-nos sempre e não deixe de ser o primeiro a compartilhar nossas site!
+        Você acaba de encontrar o melhor site para fazer gerir as suas contas online!<br />
+        Inscreve-te e convida os membros da tua família e nós fazemos tudo ! visite-nos sempre e não deixe de ser o primeiro a compartilhar o nosso site.
     </p>
 </div>
-@*<div class="container">
-    <div class="row">
-        @*<div class="col-sm-4">
-            <h3>Column 1</h3>
-            <p>Você acaba de encontrar o melhor site... <br />...</p>
-            <p>Faz  gestão das tuas contas online!...</p>
-        </div>
-        <div class="col-sm-4">
-            <h3>Column 2</h3>
-            <p> Inscreve-te e convida os membros da tua família...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-        </div>*@
-        @*<div class="col-sm-4">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-        </div>
-    </div>
-</div>*@
+
 <script>
     $(document).ready(function () {
         // esconde a mensagem de 'sucesso'
